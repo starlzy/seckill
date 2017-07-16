@@ -52,9 +52,13 @@ public class SeckillServiceImpl implements SeckillService {
         //优化点：缓存优化，建立在超时上基础 的一致性维护：
         //1.访问redis
         Seckill seckill = redisDao.getSeckill(seckillId);
+
+        System.out.println("seckill的值：" + seckill);
+        System.out.println("seckill的值：" + seckill);
         if (seckill == null) {
             //2.数据库访问
             seckill = seckillDao.queryById(seckillId);
+
             if (seckill == null) {
                 return new Exposer(false, seckillId);
             } else {
@@ -89,6 +93,8 @@ public class SeckillServiceImpl implements SeckillService {
      */
     public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
             throws SeckillException, RepeatKillException, SeckillCloseException {
+
+        System.out.println("当前md5值是：" + md5);
         if (md5 == null || !md5.equals(getMd5(seckillId))) {
             throw new SeckillException("seckill data rewrite");
         }

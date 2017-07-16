@@ -15,7 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-
 /**
  * Created by lzy on 14/07/17.
  */
@@ -50,11 +49,11 @@ public class SeckillServiceTest {
 
     @Test
     public void executeSeckill() throws Exception {
-        long id = 1004;
+        long id = 1005;
         Exposer exposer = seckillService.exportSeckillUrl(id);
         if(exposer.isExposed()){
             logger.info("exposer={}",exposer);
-            long phone=1351246779l;
+            long phone=13509877890l;
             String md5 = exposer.getMd5();
             try {
                 SeckillExecution execution = seckillService.executeSeckill(id, phone, md5);
